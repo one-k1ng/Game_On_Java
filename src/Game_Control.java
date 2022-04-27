@@ -1,17 +1,10 @@
 import javax.swing.*;
 import java.awt.*;
+import java.util.Random;
 
-public class GameOfFifteen extends JPanel {
-    public int size;
-    public int margin;
-    public int dimension;
-    public static Color Foreground_Color = new Color(200,80,80);
-    public int[] tiles;
-    public int tileSize;
-    public int nbTiles;
-    public int blankPos;
-    public int gridSize;
-    public boolean gameOver;
+public class GameOfFifteen{
+    public Random RANDOM = new Random();
+
 
     public void newGame(){
         do {
@@ -51,5 +44,16 @@ public class GameOfFifteen extends JPanel {
         }
 
         blankPos = tiles.length - 1;
+    }
+
+    public void shuffle(){
+        int  n = nbTiles;
+
+        while (n > 1){
+            int r = RANDOM.nextInt(n--);
+            int tmp = tiles[r];
+            tiles[r] = tiles[n];
+            tiles[n] = tmp;
+        }
     }
 }

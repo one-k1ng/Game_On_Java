@@ -7,7 +7,7 @@ public abstract class MouseBox implements MouseListener {
         if (gameOver) {
             newGame();
         } else {
-                // Получаем позицию клика
+            // Получаем позицию клика
             int ex = e.getX() - margin;
             int ey = e.getY() - margin;
 

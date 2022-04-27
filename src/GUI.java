@@ -1,6 +1,8 @@
+import javax.swing.*;
 import java.awt.*;
 
-public class GUI extends GameOfFifteen{
+public class GUI extends JPanel {
+
 
     public void drawCenteredString(Graphics2D g, String s, int x, int y){
         FontMetrics fm = g.getFontMetrics();
@@ -13,6 +15,7 @@ public class GUI extends GameOfFifteen{
 
     public void drawGrid(Graphics2D g){
         for (int i = 0; i < tiles.length; i++){
+
             int r = i / size;
             int c = i % size;
 
