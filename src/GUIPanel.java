@@ -1,7 +1,7 @@
 import javax.swing.*;
 import java.awt.*;
 
-public class GUI extends JPanel {
+public class GUIPanel extends JPanel {
 
     public void drawCenteredString(Graphics2D g, String s, int x, int y){
         Configuration configuration;
