@@ -2,24 +2,28 @@ import javax.swing.*;
 import java.awt.*;
 import java.util.Random;
 
-public class GameOfFifteen{
+public class Game_Control{
     public Random RANDOM = new Random();
-
+    public int nbTiles;
 
     public void newGame(){
+        Configuration configuration;
+        configuration = new Configuration(4,550,30);
         do {
             reset();
-            logic.shuffle();
+            shuffle();
         }while(!isSolvable());
-        gameOver = false;
+        configuration.gameOver = false;
     }
 
     public boolean isSolvable() {
+        Configuration configuration;
+        configuration = new Configuration(4,550,30);
         int countInversion = 0;
 
         for (int i = 0; i < nbTiles; i++){
             for (int j = 0; j < i; j++){
-                if (tiles[j] > tiles[i])
+                if (configuration.tiles[j] > configuration.tiles[i])
                     countInversion++;
             }
         }
@@ -28,32 +32,38 @@ public class GameOfFifteen{
     }
 
     public boolean isSolved(){
-        if (tiles[tiles.length - 1] != 0)
+        Configuration configuration;
+        configuration = new Configuration(4,550,30);
+        if (configuration.tiles[configuration.tiles.length - 1] != 0)
             return false;
 
         for (int i = nbTiles - 1; i >= 0; i--){
-            if (tiles[i] != i + 1)
+            if (configuration.tiles[i] != i + 1)
                 return false;
         }
         return true;
     }
 
     public void reset(){
-        for (int i = 0; i < tiles.length; i++){
-            tiles[i] = (i + 1) % tiles.length;
+        Configuration configuration;
+        configuration = new Configuration(4,550,30);
+        for (int i = 0; i < configuration.tiles.length; i++){
+            configuration.tiles[i] = (i + 1) % configuration.tiles.length;
         }
 
-        blankPos = tiles.length - 1;
+        configuration.blankPos = configuration.tiles.length - 1;
     }
 
     public void shuffle(){
+        Configuration configuration;
+        configuration = new Configuration(4,550,30);
         int  n = nbTiles;
 
         while (n > 1){
             int r = RANDOM.nextInt(n--);
-            int tmp = tiles[r];
-            tiles[r] = tiles[n];
-            tiles[n] = tmp;
+            int tmp = configuration.tiles[r];
+            configuration.tiles[r] = configuration.tiles[n];
+           configuration. tiles[n] = tmp;
         }
     }
 }
