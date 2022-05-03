@@ -3,8 +3,7 @@ import java.awt.*;
 
 public class GUIPanel extends JPanel {
     public void drawGrid(Graphics2D g){
-        for (int i = 0; i < Configuration.tiles.length; i++){
-
+        for (int i = 0; i < Configuration.tiles.length; i++) {
             int r = i / Configuration.size;
             int c = i % Configuration.size;
 
@@ -17,14 +16,15 @@ public class GUIPanel extends JPanel {
                     drawCenteredString(g, "\u2713", x, y);
                 }
             }
+            else {
+                g.setColor(getForeground());
+                g.fillRoundRect(x, y, Configuration.tileSize, Configuration.tileSize, 25, 25);
+                g.setColor(Color.BLACK);
+                g.drawRoundRect(x, y, Configuration.tileSize, Configuration.tileSize, 25, 25);
+                g.setColor(Color.WHITE);
 
-            g.setColor(getForeground());
-            g.fillRoundRect(x, y, Configuration.tileSize, Configuration.tileSize, 25, 25);
-            g.setColor(Color.BLACK);
-            g.drawRoundRect(x, y, Configuration.tileSize, Configuration.tileSize, 25, 25);
-            g.setColor(Color.WHITE);
-
-            drawCenteredString(g, String.valueOf(Configuration.tiles[i]), x, y);
+                drawCenteredString(g, String.valueOf(Configuration.tiles[i]), x, y);
+            }
         }
     }
 
