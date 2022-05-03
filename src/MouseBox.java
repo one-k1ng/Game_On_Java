@@ -2,13 +2,16 @@ import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 
 public abstract class MouseBox implements MouseListener {
+
+    Configuration configuration;
+
     @Override
     public void mousePressed(MouseEvent e) {
-        Configuration configuration;
-        configuration = new Configuration(4,550,30);
+
         Game_Control goc;
         goc = new Game_Control();
-        if (configuration.gameOver) {
+
+        if (!configuration.gameOver) {
             goc.newGame();
         } else {
             // Получаем позицию клика
