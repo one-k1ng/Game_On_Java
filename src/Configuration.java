@@ -1,18 +1,18 @@
 import java.awt.*;
 
 public class Configuration {
-    public int size;
-    public int margin;
-    public int dimension;
-    public int[] tiles;
-    public int gridSize;
-    public int tileSize;
-    public boolean gameOver;
-    public int blankPos;
+    public static int size;
+    public static int margin;
+    public static int dimension;
+    public static int[] tiles;
+    public static int gridSize;
+    public static int tileSize;
+    public static int blankPos;
     public static Color Foreground_Color;
-    public int nbTiles;
+    public static int nbTiles;
+    public static boolean gameOver;
 
-    public Configuration(){
+    static {
         size = 4;
         margin = 30;
         dimension = 550;

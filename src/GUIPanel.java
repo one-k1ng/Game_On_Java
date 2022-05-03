@@ -2,33 +2,29 @@ import javax.swing.*;
 import java.awt.*;
 
 public class GUIPanel extends JPanel {
-
-    Configuration configuration;
-
     public void drawGrid(Graphics2D g){
-        configuration = new Configuration();
-        for (int i = 0; i < configuration.tiles.length; i++){
+        for (int i = 0; i < Configuration.tiles.length; i++){
 
-            int r = i / configuration.size;
-            int c = i % configuration.size;
+            int r = i / Configuration.size;
+            int c = i % Configuration.size;
 
-            int x = configuration.margin + c * configuration.tileSize;
-            int y = configuration.margin + r * configuration.tileSize;
+            int x = Configuration.margin + c * Configuration.tileSize;
+            int y = Configuration.margin + r * Configuration.tileSize;
 
-            if (configuration.tiles[i] == 0){
-                if (!configuration.gameOver) {
+            if (Configuration.tiles[i] == 0){
+                if (!Configuration.gameOver) {
                     g.setColor(Configuration.Foreground_Color);
                     drawCenteredString(g, "\u2713", x, y);
                 }
             }
 
             g.setColor(getForeground());
-            g.fillRoundRect(x, y, configuration.tileSize, configuration.tileSize, 25, 25);
+            g.fillRoundRect(x, y, Configuration.tileSize, Configuration.tileSize, 25, 25);
             g.setColor(Color.BLACK);
-            g.drawRoundRect(x, y, configuration.tileSize, configuration.tileSize, 25, 25);
+            g.drawRoundRect(x, y, Configuration.tileSize, Configuration.tileSize, 25, 25);
             g.setColor(Color.WHITE);
 
-            drawCenteredString(g, String.valueOf(configuration.tiles[i]), x, y);
+            drawCenteredString(g, String.valueOf(Configuration.tiles[i]), x, y);
         }
     }
 
@@ -36,19 +32,19 @@ public class GUIPanel extends JPanel {
         FontMetrics fm = g.getFontMetrics();
         int asc = fm.getAscent();
         int desc = fm.getDescent();
-        g.drawString(s, x + (configuration.tileSize - fm.stringWidth(s)) / 2,
-                y + (asc + (configuration.tileSize - (asc -desc)) / 2));
+        g.drawString(s, x + (Configuration.tileSize - fm.stringWidth(s)) / 2,
+                y + (asc + (Configuration.tileSize - (asc -desc)) / 2));
 
     }
 
 
     public void drawStartMessage(Graphics2D g){
-        if (!configuration.gameOver){
+        if (!Configuration.gameOver){
             g.setFont(getFont().deriveFont(Font.BOLD, 18));
             g.setColor(Configuration.Foreground_Color);
             String s = "Click to start new game";
             g.drawString(s, (getWidth() - g.getFontMetrics().stringWidth(s)) / 2,
-                    getHeight() - configuration.margin);
+                    getHeight() - Configuration.margin);
         }
     }
 

@@ -1,9 +1,7 @@
-import java.awt.event.MouseAdapter;
 import java.util.Random;
 
 public class Game_Control{
     public Random RANDOM = new Random();
-    Configuration configuration;
 
 
     public void newGame(){
@@ -11,15 +9,15 @@ public class Game_Control{
             reset();
             shuffle();
         }while(!isSolvable());
-        configuration.gameOver = false;
+        Configuration.gameOver = false;
     }
 
     public boolean isSolvable() {
         int countInversion = 0;
 
-        for (int i = 0; i < configuration.nbTiles; i++){
+        for (int i = 0; i < Configuration.nbTiles; i++){
             for (int j = 0; j < i; j++){
-                if (configuration.tiles[j] > configuration.tiles[i])
+                if (Configuration.tiles[j] > Configuration.tiles[i])
                     countInversion++;
             }
         }
@@ -28,32 +26,32 @@ public class Game_Control{
     }
 
     public boolean isSolved(){
-        if (configuration.tiles[configuration.tiles.length - 1] != 0)
+        if (Configuration.tiles[Configuration.tiles.length - 1] != 0)
             return false;
 
-        for (int i = configuration.nbTiles - 1; i >= 0; i--){
-            if (configuration.tiles[i] != i + 1)
+        for (int i = Configuration.nbTiles - 1; i >= 0; i--){
+            if (Configuration.tiles[i] != i + 1)
                 return false;
         }
         return true;
     }
 
     public void reset(){
-        for (int i = 0; i < configuration.tiles.length; i++){
-            configuration.tiles[i] = (i + 1) % configuration.tiles.length;
+        for (int i = 0; i < Configuration.tiles.length; i++){
+            Configuration.tiles[i] = (i + 1) % Configuration.tiles.length;
         }
 
-        configuration.blankPos = configuration.tiles.length - 1;
+        Configuration.blankPos = Configuration.tiles.length - 1;
     }
 
     public void shuffle(){
-        int  n = configuration.nbTiles;
+        int  n = Configuration.nbTiles;
 
         while (n > 1){
             int r = RANDOM.nextInt(n--);
-            int tmp = configuration.tiles[r];
-            configuration.tiles[r] = configuration.tiles[n];
-           configuration. tiles[n] = tmp;
+            int tmp = Configuration.tiles[r];
+            Configuration.tiles[r] = Configuration.tiles[n];
+           Configuration. tiles[n] = tmp;
         }
     }
 }
