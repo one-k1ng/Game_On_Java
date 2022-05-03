@@ -1,3 +1,4 @@
+import java.awt.event.MouseAdapter;
 import java.util.Random;
 
 public class Game_Control{

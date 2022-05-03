@@ -15,6 +15,13 @@ public class GUIPanel extends JPanel {
             int x = configuration.margin + c * configuration.tileSize;
             int y = configuration.margin + r * configuration.tileSize;
 
+            if (configuration.tiles[i] == 0){
+                if (!configuration.gameOver) {
+                    g.setColor(Configuration.Foreground_Color);
+                    drawCenteredString(g, "\u2713", x, y);
+                }
+            }
+
             g.setColor(getForeground());
             g.fillRoundRect(x, y, configuration.tileSize, configuration.tileSize, 25, 25);
             g.setColor(Color.BLACK);
@@ -22,14 +29,6 @@ public class GUIPanel extends JPanel {
             g.setColor(Color.WHITE);
 
             drawCenteredString(g, String.valueOf(configuration.tiles[i]), x, y);
-
-            if (configuration.tiles[i] == 0){
-                if (!configuration.gameOver){
-                    g.setColor(Configuration.Foreground_Color);
-                    drawCenteredString(g, "\u2713", x, y);
-                }
-
-            }
         }
     }
 
