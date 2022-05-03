@@ -1,7 +1,12 @@
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 
-public abstract class MouseBox implements MouseListener {
+public class MouseBox implements MouseListener {
+    @Override
+    public void mouseClicked(MouseEvent e) {
+
+    }
+
     @Override
     public void mousePressed(MouseEvent e) {
 
@@ -43,5 +48,20 @@ public abstract class MouseBox implements MouseListener {
             // Проверяем решена ли игра
             Configuration.gameOver = goc.isSolved();
         }
+    }
+
+    @Override
+    public void mouseReleased(MouseEvent e) {
+
+    }
+
+    @Override
+    public void mouseEntered(MouseEvent e) {
+
+    }
+
+    @Override
+    public void mouseExited(MouseEvent e) {
+
     }
 }

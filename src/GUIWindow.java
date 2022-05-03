@@ -1,7 +1,7 @@
 import javax.swing.*;
 import java.awt.*;
 
-public class GUIWindow extends JFrame{
+public class GUIWindow extends JFrame {
     public GUIWindow() {
         Game_Control newGame = new Game_Control();
         newGame.newGame();
@@ -17,5 +17,5 @@ public class GUIWindow extends JFrame{
         setBackground(Color.WHITE);
         setForeground(Configuration.Foreground_Color);
         setFont(new Font("SansSerif", Font.BOLD, 60));
-        }
     }
+}

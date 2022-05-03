@@ -51,7 +51,7 @@ public class Game_Control{
             int r = RANDOM.nextInt(n--);
             int tmp = Configuration.tiles[r];
             Configuration.tiles[r] = Configuration.tiles[n];
-           Configuration. tiles[n] = tmp;
+            Configuration. tiles[n] = tmp;
         }
     }
 }

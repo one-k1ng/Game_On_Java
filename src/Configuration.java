@@ -1,9 +1,14 @@
-import java.awt.*;
+//
+// Source code recreated from a .class file by IntelliJ IDEA
+// (powered by FernFlower decompiler)
+//
+
+import java.awt.Color;
 
 public class Configuration {
-    public static int size;
-    public static int margin;
-    public static int dimension;
+    public static int size = 4;
+    public static int margin = 30;
+    public static int dimension = 550;
     public static int[] tiles;
     public static int gridSize;
     public static int tileSize;
@@ -12,20 +17,15 @@ public class Configuration {
     public static int nbTiles;
     public static boolean gameOver;
 
+    public Configuration() {
+    }
+
     static {
-        size = 4;
-        margin = 30;
-        dimension = 550;
-
         tiles = new int[size * size];
-
-        Foreground_Color = new Color(239,80,80);
-
-        gridSize = (dimension - 2 * margin);
+        Foreground_Color = new Color(240, 80, 80);
+        gridSize = dimension - 2 * margin;
         tileSize = gridSize / size;
-
         nbTiles = size * size - 1;
-
         gameOver = true;
     }
 }
