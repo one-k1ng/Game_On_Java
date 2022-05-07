@@ -22,7 +22,7 @@ public class Configuration {
 
     static {
         tiles = new int[size * size];
-        Foreground_Color = new Color(240, 80, 80);
+        Foreground_Color = new Color(250, 80, 80);
         gridSize = dimension - 2 * margin;
         tileSize = gridSize / size;
         nbTiles = size * size - 1;

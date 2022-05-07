@@ -1,7 +1,6 @@
 import java.awt.event.*;
 
-public class MouseBox implements MouseListener
-{
+public class MouseBox implements MouseListener {
     @Override
     public void mousePressed(MouseEvent e) {
 
@@ -18,7 +17,7 @@ public class MouseBox implements MouseListener
             int ey = e.getY() - Configuration.margin;
 
             // Нажатие на сетку
-            if (ex < 0 || ex > Configuration.gridSize || ey < 0  || ey > Configuration.gridSize)
+            if (ex < 0 || ex > Configuration.gridSize || ey < 0 || ey > Configuration.gridSize)
                 return;
             // Получаем позицию на сетке
             int c1 = ex / Configuration.tileSize;
@@ -29,7 +28,7 @@ public class MouseBox implements MouseListener
             int clickPos = r1 * Configuration.size + c1;
             int dir = 0;
             // Ищем направление для перемещения ячейки
-            if (c1 == c2  &&  Math.abs(r1 - r2) > 0)
+            if (c1 == c2 && Math.abs(r1 - r2) > 0)
                 dir = (r1 - r2) > 0 ? Configuration.size : -Configuration.size;
             else if (r1 == r2 && Math.abs(c1 - c2) > 0)
                 dir = (c1 - c2) > 0 ? 1 : -1;
@@ -39,7 +38,7 @@ public class MouseBox implements MouseListener
                     int newBlankPos = Configuration.blankPos + dir;
                     Configuration.tiles[Configuration.blankPos] = Configuration.tiles[newBlankPos];
                     Configuration.blankPos = newBlankPos;
-                } while(Configuration.blankPos != clickPos);
+                } while (Configuration.blankPos != clickPos);
                 Configuration.tiles[Configuration.blankPos] = 0;
             }
             // Проверяем решена ли игра

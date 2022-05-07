@@ -28,7 +28,7 @@ public class GUIPanel extends JPanel {
             else {
                 g.setColor(this.getForeground());
                 g.fillRoundRect(x, y, Configuration.tileSize, Configuration.tileSize, 25, 25);
-                g.setColor(Color.BLACK);
+                g.setColor(Configuration.Foreground_Color);
                 g.drawRoundRect(x, y, Configuration.tileSize, Configuration.tileSize, 25, 25);
                 g.setColor(Color.WHITE);
                 this.drawCenteredString(g, String.valueOf(Configuration.tiles[i]), x, y);
@@ -61,5 +61,6 @@ public class GUIPanel extends JPanel {
         g2D.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
         this.drawGrid(g2D);
         this.drawStartMessage(g2D);
+        this.repaint();
     }
 }
