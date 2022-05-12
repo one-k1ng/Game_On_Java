@@ -63,6 +63,13 @@ public class GUIPanel extends JPanel {
         g.drawString(s, 600, 100);
     }
 
+    public void drawTimer(Graphics2D g){
+        g.setFont(this.getFont().deriveFont(Font.BOLD, 20.0F));
+        g.setColor(Color.BLACK);
+        String s = "Время: " + Game_Control.getTimer();
+        g.drawString(s, 600, 300);
+    }
+
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
         Graphics2D g2D = (Graphics2D)g;
@@ -70,6 +77,7 @@ public class GUIPanel extends JPanel {
         this.drawGrid(g2D);
         this.drawStartMessage(g2D);
         this.drawCounter(g2D);
+        this.drawTimer(g2D);
         this.repaint();
     }
 }
