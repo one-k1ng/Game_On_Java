@@ -1,10 +1,13 @@
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectOutputStream;
 import java.util.Random;
 import java.util.*;
 
-public class Game_Control{
+public class Game_Control {
     public Random RANDOM = new Random();
 
-    public void newGame(){
+    public void newGame() {
         do {
             if (Configuration.gameOver)
                 GameStats.clickCounters.set(GameStats.clickCounters.size() - 1, 0);
@@ -16,6 +19,8 @@ public class Game_Control{
         }while(!isSolvable());
         Configuration.gameOver = false;
     }
+
+
 
     public boolean isSolvable() {
         int countInversion = 0;

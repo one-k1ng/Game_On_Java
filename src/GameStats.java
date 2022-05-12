@@ -1,4 +1,4 @@
-import java.io.Serializable;
+import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -11,7 +11,28 @@ public class GameStats implements Serializable {
         clickCounters.add(0);
         timerCounterValues.add(0);
     }
-//
+
+    public void serializeGame() throws IOException {
+        GameStats gameStats = new GameStats();
+
+        FileOutputStream outputStream = new FileOutputStream("save.ser");
+        ObjectOutputStream objectOutputStream = new ObjectOutputStream(outputStream);
+
+        objectOutputStream.writeObject(gameStats);
+
+        objectOutputStream.close();
+    }
+
+    public GameStats deserializeGame() throws IOException, ClassNotFoundException{
+        FileInputStream fileInputStream = new FileInputStream("save.ser");
+        ObjectInputStream objectInputStream = new ObjectInputStream(fileInputStream);
+
+        GameStats gameStats = (GameStats) objectInputStream.readObject();
+
+        return gameStats;
+    }
+
+
 //    public static int getClickCounter() {
 //        return clickCounter;
 //    }
