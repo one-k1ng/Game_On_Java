@@ -3,8 +3,6 @@ import java.util.*;
 
 public class Game_Control{
     public Random RANDOM = new Random();
-    private static int clickCounter = 0;
-    private static int timerValue = 0;
 
     public void newGame(){
         do {
