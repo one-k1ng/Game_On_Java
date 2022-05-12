@@ -33,6 +33,8 @@ public class MouseBox implements MouseListener {
             else if (r1 == r2 && Math.abs(c1 - c2) > 0)
                 dir = (c1 - c2) > 0 ? 1 : -1;
             if (dir != 0) {
+                Game_Control.incrementClickCounter();
+
                 //Перемещаем пустую ячейку по навралению
                 do {
                     int newBlankPos = Configuration.blankPos + dir;

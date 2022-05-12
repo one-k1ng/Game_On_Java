@@ -50,9 +50,17 @@ public class GUIPanel extends JPanel {
             g.setFont(this.getFont().deriveFont(Font.BOLD, 18.0F));
             g.setColor(Configuration.Foreground_Color);
             String s = "Click to start new game";
-            g.drawString(s, (this.getWidth() - g.getFontMetrics().stringWidth(s)) / 2, this.getHeight() - Configuration.margin);
+            g.drawString(s, (this.getWidth() - g.getFontMetrics().stringWidth(s)) / 2,
+                            this.getHeight() - Configuration.margin);
         }
 
+    }
+
+    public void drawCounter(Graphics2D g){
+        g.setFont(this.getFont().deriveFont(Font.BOLD, 20.0F));
+        g.setColor(Color.BLACK);
+        String s = "Переход counter: " + Game_Control.getClickCounter();
+        g.drawString(s, 600, 100);
     }
 
     protected void paintComponent(Graphics g) {
@@ -61,6 +69,7 @@ public class GUIPanel extends JPanel {
         g2D.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
         this.drawGrid(g2D);
         this.drawStartMessage(g2D);
+        this.drawCounter(g2D);
         this.repaint();
     }
 }

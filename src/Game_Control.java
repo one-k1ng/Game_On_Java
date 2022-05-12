@@ -2,14 +2,28 @@ import java.util.Random;
 
 public class Game_Control{
     public Random RANDOM = new Random();
-
+    private static int clickCounter = 0;
 
     public void newGame(){
         do {
+            if (Configuration.gameOver)
+                setClickCounter(0);
             reset();
             shuffle();
         }while(!isSolvable());
         Configuration.gameOver = false;
+    }
+
+    public static int getClickCounter() {
+        return clickCounter;
+    }
+
+    public static void incrementClickCounter() {
+        clickCounter += 1;
+    }
+
+    public static void setClickCounter(int newCounter){
+        clickCounter = newCounter;
     }
 
     public boolean isSolvable() {
