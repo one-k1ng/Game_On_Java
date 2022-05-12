@@ -6,6 +6,11 @@ import java.util.List;
 public class GameStats implements Serializable {
     public static List<Integer> clickCounters = new ArrayList<>();
     public static List<Integer> timerCounterValues = new ArrayList<>();
+
+    static {
+        clickCounters.add(0);
+        timerCounterValues.add(0);
+    }
 //
 //    public static int getClickCounter() {
 //        return clickCounter;
