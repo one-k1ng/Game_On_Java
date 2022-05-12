@@ -57,16 +57,18 @@ public class GUIPanel extends JPanel {
     }
 
     public void drawCounter(Graphics2D g){
+        int currentClickCounter = GameStats.clickCounters.get(GameStats.clickCounters.size() - 1);
         g.setFont(this.getFont().deriveFont(Font.BOLD, 20.0F));
         g.setColor(Color.BLACK);
-        String s = "Переход counter: " + Game_Control.getClickCounter();
+        String s = "Переход counter: " + currentClickCounter;
         g.drawString(s, 600, 100);
     }
 
     public void drawTimer(Graphics2D g){
+        int currentTimer = GameStats.timerCounterValues.get(GameStats.timerCounterValues.size() - 1);
         g.setFont(this.getFont().deriveFont(Font.BOLD, 20.0F));
         g.setColor(Color.BLACK);
-        String s = "Время: " + Game_Control.getTimer();
+        String s = "Время: " + currentTimer;
         g.drawString(s, 600, 300);
     }
 

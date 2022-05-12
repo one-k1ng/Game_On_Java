@@ -4,43 +4,19 @@ import java.util.*;
 public class Game_Control{
     public Random RANDOM = new Random();
     private static int clickCounter = 0;
-    private static int timer = 0;
+    private static int timerValue = 0;
 
     public void newGame(){
         do {
             if (Configuration.gameOver)
-                setClickCounter(0);
-                setTimer(0);
-                Timer timer = new Timer();
-                timer.schedule(new IncrementTimerTask(), 0, 1000);
+                GameStats.clickCounters.set(GameStats.clickCounters.size() - 1, 0);
+                GameStats.timerCounterValues.set(GameStats.timerCounterValues.size() - 1, 0);
+            Timer timer = new Timer();
+            timer.schedule(new IncrementTimerTask(), 0, 1000);
             reset();
             shuffle();
         }while(!isSolvable());
         Configuration.gameOver = false;
-    }
-
-    public static int getClickCounter() {
-        return clickCounter;
-    }
-
-    public static void incrementClickCounter() {
-        clickCounter += 1;
-    }
-
-    public static void setClickCounter(int newCounter){
-        clickCounter = newCounter;
-    }
-
-    public static int getTimer(){
-        return timer;
-    }
-
-    public static void incrementTimer(){
-        timer += 1;
-    }
-
-    public static void setTimer(int newTimer){
-        timer = newTimer;
     }
 
     public boolean isSolvable() {
