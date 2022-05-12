@@ -13,7 +13,7 @@ public class GUIWindow extends JFrame {
         add(new GUIPanel(), BorderLayout.CENTER);
         pack();
         setLocationRelativeTo(null);
-        setSize(650, 650);
+        setSize(1280, 650);
         setVisible(true);
         setPreferredSize(new Dimension(Configuration.dimension, Configuration.dimension + Configuration.margin));
         setBackground(Color.WHITE);
