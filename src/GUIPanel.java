@@ -4,7 +4,7 @@
 //
 
 import java.awt.*;
-import javax.swing.JPanel;
+import javax.swing.*;
 
 public class GUIPanel extends JPanel {
     public GUIPanel() {
@@ -57,7 +57,7 @@ public class GUIPanel extends JPanel {
     }
 
     public void drawCounter(Graphics2D g){
-        int currentClickCounter = GameStats.clickCounters.get(GameStats.clickCounters.size() - 1);
+        int currentClickCounter = Game_Control.gameStats.clickCounters.get(Game_Control.gameStats.clickCounters.size() - 1);
         g.setFont(this.getFont().deriveFont(Font.BOLD, 20.0F));
         g.setColor(Color.BLACK);
         String s = "Переход counter: " + currentClickCounter;
@@ -65,7 +65,7 @@ public class GUIPanel extends JPanel {
     }
 
     public void drawTimer(Graphics2D g){
-        int currentTimer = GameStats.timerCounterValues.get(GameStats.timerCounterValues.size() - 1);
+        int currentTimer = Game_Control.gameStats.timerCounters.get(Game_Control.gameStats.timerCounters.size() - 1);
         g.setFont(this.getFont().deriveFont(Font.BOLD, 20.0F));
         g.setColor(Color.BLACK);
         String s = "Время: " + currentTimer;
@@ -81,5 +81,9 @@ public class GUIPanel extends JPanel {
         this.drawCounter(g2D);
         this.drawTimer(g2D);
         this.repaint();
+
+        JButton restartButton = new JButton("Restart");
+        restartButton.addActionListener(listener -> Configuration.gameOver = true);
+        add(restartButton);
     }
 }

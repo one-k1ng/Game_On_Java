@@ -4,33 +4,9 @@ import java.util.List;
 
 
 public class GameStats implements Serializable {
-    public static List<Integer> clickCounters = new ArrayList<>();
-    public static List<Integer> timerCounterValues = new ArrayList<>();
-
-    static {
-        clickCounters.add(0);
-        timerCounterValues.add(0);
-    }
-
-    public void serializeGame() throws IOException {
-        GameStats gameStats = new GameStats();
-
-        FileOutputStream outputStream = new FileOutputStream("save.ser");
-        ObjectOutputStream objectOutputStream = new ObjectOutputStream(outputStream);
-
-        objectOutputStream.writeObject(gameStats);
-
-        objectOutputStream.close();
-    }
-
-    public GameStats deserializeGame() throws IOException, ClassNotFoundException{
-        FileInputStream fileInputStream = new FileInputStream("save.ser");
-        ObjectInputStream objectInputStream = new ObjectInputStream(fileInputStream);
-
-        GameStats gameStats = (GameStats) objectInputStream.readObject();
-
-        return gameStats;
-    }
+    public List<Integer> clickCounters = new ArrayList<>();
+    public List<Integer> timerCounters = new ArrayList<>();
+    private static final long serialVersionUID = 1L;
 
 
 //    public static int getClickCounter() {

@@ -2,6 +2,6 @@ import java.util.TimerTask;
 
 public class IncrementTimerTask extends TimerTask {
     public void run(){
-        GameStats.timerCounterValues.set(GameStats.timerCounterValues.size() - 1, GameStats.timerCounterValues.get(GameStats.timerCounterValues.size() - 1) + 1);
+        Game_Control.gameStats.timerCounters.set(Game_Control.gameStats.timerCounters.size() - 1, Game_Control.gameStats.timerCounters.get(Game_Control.gameStats.timerCounters.size() - 1) + 1);
     }
 }

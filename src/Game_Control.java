@@ -1,23 +1,35 @@
-import java.io.FileOutputStream;
+import javax.xml.crypto.Data;
 import java.io.IOException;
-import java.io.ObjectOutputStream;
 import java.util.Random;
 import java.util.*;
 
 public class Game_Control {
     public Random RANDOM = new Random();
+    private final Timer timer = new Timer();
+    public static final GameStats gameStats = new GameStats();
+
+    public Game_Control() {
+        if (gameStats.timerCounters.size() == 0) {
+            DataController dataController = new DataController(gameStats);
+            try {
+                dataController.deserializeGame();
+            } catch (IOException | ClassNotFoundException e) {
+                e.printStackTrace();
+            }
+        }
+    }
 
     public void newGame() {
         do {
-            if (Configuration.gameOver)
-                GameStats.clickCounters.set(GameStats.clickCounters.size() - 1, 0);
-                GameStats.timerCounterValues.set(GameStats.timerCounterValues.size() - 1, 0);
-            Timer timer = new Timer();
-            timer.schedule(new IncrementTimerTask(), 0, 1000);
             reset();
             shuffle();
         }while(!isSolvable());
+        System.out.println(gameStats.clickCounters);
+        System.out.println(gameStats.timerCounters);
+        gameStats.clickCounters.add(0);
+        gameStats.timerCounters.add(0);
         Configuration.gameOver = false;
+        timer.schedule(new IncrementTimerTask(), 0, 1000);
     }
 
 

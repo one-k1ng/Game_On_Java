@@ -1,17 +1,19 @@
+import javax.xml.crypto.Data;
 import java.awt.event.*;
+import java.io.IOException;
 
 public class MouseBox implements MouseListener {
+    public MouseBox() {
+
+    }
+
     @Override
     public void mousePressed(MouseEvent e) {
 
         Game_Control goc;
         goc = new Game_Control();
 
-        System.out.println(e.getX());
-
-        if (Configuration.gameOver) {
-            goc.newGame();
-        } else {
+        if (!Configuration.gameOver) {
             // Получаем позицию клика
             int ex = e.getX() - Configuration.margin;
             int ey = e.getY() - Configuration.margin;
@@ -33,7 +35,7 @@ public class MouseBox implements MouseListener {
             else if (r1 == r2 && Math.abs(c1 - c2) > 0)
                 dir = (c1 - c2) > 0 ? 1 : -1;
             if (dir != 0) {
-                GameStats.clickCounters.set(GameStats.clickCounters.size() - 1, GameStats.clickCounters.get(GameStats.clickCounters.size() - 1) + 1);
+                Game_Control.gameStats.clickCounters.set(Game_Control.gameStats.clickCounters.size() - 1, Game_Control.gameStats.clickCounters.get(Game_Control.gameStats.clickCounters.size() - 1) + 1);
 
                 //Перемещаем пустую ячейку по навралению
                 do {
@@ -45,6 +47,14 @@ public class MouseBox implements MouseListener {
             }
             // Проверяем решена ли игра
             Configuration.gameOver = goc.isSolved();
+        } else {
+            try {
+                DataController dataController = new DataController(Game_Control.gameStats);
+                dataController.serializeGame();
+            } catch (IOException exc) {
+                exc.printStackTrace();
+            }
+            goc.newGame();
         }
     }
 
