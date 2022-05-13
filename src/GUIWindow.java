@@ -1,11 +1,15 @@
 import javax.swing.*;
+import javax.xml.crypto.Data;
 import java.awt.*;
 import java.awt.event.MouseEvent;
+import java.io.IOException;
 
 public class GUIWindow extends JFrame {
+    public static Game_Control game;
+
     public GUIWindow() {
-        Game_Control newGame = new Game_Control();
-        newGame.newGame();
+        game = new Game_Control();
+        game.newGame();
         this.addMouseListener(new MouseBox());
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setTitle("Game Of Fifteen");
@@ -19,5 +23,6 @@ public class GUIWindow extends JFrame {
         setBackground(Color.WHITE);
         setForeground(Configuration.Foreground_Color);
         setFont(new Font("SansSerif", Font.BOLD, 60));
+
     }
 }
